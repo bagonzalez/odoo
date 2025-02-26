@@ -1,0 +1,61 @@
+<odoo>
+
+    <record id="view_credit_request_tree" model="ir.ui.view">
+            <field name="name">credit.request.tree</field>
+            <field name="model">credit.request</field>
+            <field name="arch" type="xml">
+                <list string="Credit Requests">
+                    <field name="partner_id"/>
+                    <field name="amount"/>
+                    <field name="request_date"/>
+                    <field name="state"/>
+                </list>
+            </field>
+    </record>
+
+    <record id="view_credit_request_form" model="ir.ui.view">
+        <field name="name">credit.request.form</field>
+        <field name="model">credit.request</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="partner_id"/>
+                        <field name="amount"/>
+                        <field name="request_date"/>
+                        <field name="state"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_credit_request_kanban" model="ir.ui.view">
+            <field name="name">credit.request.kanban</field>
+            <field name="model">credit.request</field>
+            <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile" archivable="false" js_class="crm_kanban" sample="1">
+                <progressbar field="state" colors='{"draft": "success"}'/>
+                <templates>
+                    <t t-name="card">
+                        <field name="partner_id"/>
+                        <field name="amount"/>
+                        <field name="request_date"/>
+                        <field name="state"/>
+                    </t>
+                </templates>
+            </kanban>
+            </field>
+    </record>
+
+    <record id="action_credit_request" model="ir.actions.act_window">
+        <field name="name">Credit Requests</field>
+        <field name="res_model">credit.request</field>
+        <field name="view_mode">list,form,kanban</field>
+    </record>
+
+    <menuitem id="menu_credit_request_root" name="Credit Requests"/>
+    <menuitem id="menu_credit_request" name="Credit Requests" parent="menu_credit_request_root" action="action_credit_request"/>
+
+    
+</odoo>

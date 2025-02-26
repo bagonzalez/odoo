@@ -1,0 +1,1 @@
+from . import credit_request, res_partner

@@ -1,0 +1,20 @@
+<odoo>
+    <record id="view_partner_form_inherit_credit_request" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.credit.request</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Credit Requests">
+                    <field name="credit_request_ids" widget="one2many_list">
+                        <list string="Credit Requests">
+                            <field name="amount"/>
+                            <field name="request_date"/>
+                            <field name="state"/>
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
